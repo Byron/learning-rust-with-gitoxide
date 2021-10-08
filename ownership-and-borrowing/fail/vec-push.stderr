@@ -1,0 +1,9 @@
+error[E0502]: cannot borrow `v` as mutable because it is also borrowed as immutable
+ --> fail/vec-push.rs:4:5
+  |
+3 |     let iter = v.iter();
+  |                - immutable borrow occurs here
+4 |     v.push(42);
+  |     ^^^^^^^^^^ mutable borrow occurs here
+5 |     for item in iter {
+  |                 ---- immutable borrow later used here
