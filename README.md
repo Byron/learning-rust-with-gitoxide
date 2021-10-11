@@ -1,4 +1,4 @@
-The repository worked in during episodes of [LRG](https://youtube.com/playlist?list=PLMHbQxe1e9Mk5kOHrm9v20-umkE2ck_gE) for learning Rust with [`gitoxide`].
+The repository worked in during episodes of [LRG](https://youtube.com/playlist?list=PLMHbQxe1e9Mk5kOHrm9v20-umkE2ck_gE) for learning Rust with [gitoxide].
 
 [gitoxide]: https://github.com/Byron/gitoxide
 
