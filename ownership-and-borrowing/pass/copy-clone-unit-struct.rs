@@ -9,4 +9,3 @@ fn main() {
     kung_foo(x.clone());
     kung_foo(x);
 }
-
