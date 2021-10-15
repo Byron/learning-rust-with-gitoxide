@@ -1,2 +1,2 @@
 [workspace]
-members = ["./ownership-and-borrowing"]
+members = ["./ownership-and-borrowing", "options-and-results"]
