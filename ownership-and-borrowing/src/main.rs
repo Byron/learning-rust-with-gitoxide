@@ -1,29 +1,46 @@
 #![allow(dead_code, unused_variables)]
 
-#[derive(Debug, Clone)]
-struct Foo(String, String);
-
 #[derive(Clone)]
-struct Bar {
+struct Foo {
     hello: String,
     world: String,
 }
 
-fn kung_foo(_fighter: Foo) {}
+#[derive(Clone)]
+struct Bar<'a, 'b> {
+    hello: &'a str,
+    world: &'b str,
+}
 
-fn bar_foo(Bar { hello, world }: Bar) {
-    ()
+impl Drop for Foo {
+    fn drop(&mut self) {
+        println!("{}", self.hello);
+    }
+}
+
+fn kung_foo<'a, 'b>(_a: &'a Foo, _b: &Foo) -> &'a String {
+    &_a.world
 }
 
 fn main() {
-    let x = Foo("hello".to_string(), "world".to_string());
-    kung_foo(x.clone());
-
-    let something_descriptive = {
-        let mut y = 42;
-        y += 1;
-        y
+    let x = Foo {
+        hello: "x".to_string(),
+        world: "world".to_string(),
+    };
+    let field = {
+        let y = Foo {
+            hello: "y".to_string(),
+            world: "world".to_string(),
+        };
+        kung_foo(&x, &y)
     };
 
-    dbg!({ Foo("hello".to_string(), "scope".to_string()) });
+    let field = {
+        let hello = String::from("hello");
+        let x = Bar {
+            hello: hello.as_str(),
+            world: "world",
+        };
+        x.world
+    };
 }
