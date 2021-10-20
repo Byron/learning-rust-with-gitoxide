@@ -1,23 +1,29 @@
 #![allow(unused, dead_code)]
 
-fn maybe<T>(x: T) -> Option<T> {
-    if std::time::UNIX_EPOCH.elapsed().unwrap().as_secs() % 2 == 0 {
-        Some(x)
-    } else {
-        None
+enum MyOption<T> {
+    Some(T),
+    None,
+}
+
+impl<T> MyOption<T> {
+    fn take_map<U>(&mut self, f: impl FnOnce(T) -> U) -> Option<U> {
+        match self.take() {
+            MyOption::Some(v) => Some(f(v)),
+            MyOption::None => None,
+        }
+    }
+
+    fn take(&mut self) -> MyOption<T> {
+        std::mem::replace(self, MyOption::None)
     }
 }
 
-fn do_it(value: Option<Foo>) {
-    if let Some(value) = value {
-        drop(value)
-    }
+fn change(mut v: Option<&mut String>) {
+    v.map(|v: &mut String| *v = String::from("changed"));
 }
-
-#[derive(Debug, Default)]
-struct Foo(u32);
 
 fn main() {
-    let flag = true;
-    do_it(flag.then(|| Foo(42)))
+    let mut v = vec![String::from("hello")];
+    change(v.get_mut(0));
+    println!("{:?}", v.get(0));
 }
