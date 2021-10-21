@@ -18,7 +18,7 @@ impl Drop for Foo {
     }
 }
 
-fn kung_foo<'a, 'b>(_a: &'a Foo, _b: &Foo) -> &'a String {
+fn kung_foo<'a>(_a: &'a Foo, _b: &Foo) -> &'a String {
     &_a.world
 }
 
