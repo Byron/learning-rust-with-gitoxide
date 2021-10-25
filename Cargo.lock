@@ -3,6 +3,10 @@
 version = 3
 
 [[package]]
+name = "errors"
+version = "0.1.0"
+
+[[package]]
 name = "options-and-results"
 version = "0.1.0"
 

@@ -5,10 +5,9 @@ fn add_one_safely(v: u8) -> Result<u8, &'static str> {
 }
 
 fn main() -> Result<(), &'static str> {
-    std::env::args()
-        .is_empty()
+    (std::env::args().len() == 1)
         .then(|| "need two args")
-        .map(Err)
+        .map(Err::<(), _>)
         .transpose()?;
     println!("{}", add_one_safely(255)?);
     Ok(())
