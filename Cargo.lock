@@ -26,3 +26,7 @@ version = "0.1.0"
 [[package]]
 name = "ownership-and-borrowing"
 version = "0.1.0"
+
+[[package]]
+name = "strings"
+version = "0.1.0"
