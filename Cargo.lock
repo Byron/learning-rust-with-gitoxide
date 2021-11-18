@@ -13,6 +13,10 @@ name = "boxing"
 version = "0.1.0"
 
 [[package]]
+name = "closures"
+version = "0.1.0"
+
+[[package]]
 name = "conversions"
 version = "0.1.0"
 
