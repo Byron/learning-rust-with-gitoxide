@@ -29,12 +29,12 @@ fn main() {
     dbg!(count);
 
     struct Closure<'a> {
-        count: &'a mut u32,
+        val: Rc<Vec<u32>>,
     }
     impl<'a> Closure<'a> {
         fn call(&mut self) -> u32 {
-            self.count.add_assign(1);
-            *self.count
+            self.val.add_assign(1);
+            *self.val
         }
     }
 }
